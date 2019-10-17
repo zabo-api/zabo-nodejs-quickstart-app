@@ -2,4 +2,16 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
+  hr
+  section#init
+    button#connect Connect
+
+  section#connected
+
+  section#data
+  section#error
+
+  script.
+    window.ZABO_CLIENT_ID = '#{clientId}'
+
+  script(src='scripts/script.js')

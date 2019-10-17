@@ -6,3 +6,21 @@ body {
 a {
   color: #00B7FF;
 }
+
+h2 {
+  margin-top: 32px;
+}
+
+button {
+  padding: 16px;
+  color: #FFFFFF;
+  background: #5C6FEA;
+}
+
+pre {
+  padding: 16px;
+  margin-bottom: 32px;
+  background: #ECEBEB;
+  max-height: 200px;
+  overflow: auto;
+}
