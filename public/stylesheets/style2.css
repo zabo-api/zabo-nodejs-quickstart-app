@@ -1,0 +1,32 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.action-selector {
+  display: block;
+  width: 200px;
+  height: 50px;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin: 10px 5px;
+  text-align: center;
+}
+
+.action-selector:hover {
+  cursor: pointer;
+  background-color: black;
+  color: white;
+}
+
+.input-label {
+  display: block;
+}
+
+.start-hidden {
+  display: none;
+}
