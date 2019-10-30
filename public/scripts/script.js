@@ -104,7 +104,7 @@
         row.appendChild(balance)
 
         let updatedAt = document.createElement('td')
-        updatedAt.innerText = new Date(balances[i].updated_at).toLocaleString()
+        updatedAt.innerText = new Date(balances[i].updated_at * 1000).toLocaleString()
         row.appendChild(updatedAt)
 
         balanceHolder.appendChild(row)
@@ -118,8 +118,12 @@
 
       let cell = document.createElement('td')
       cell.innerText = 'No balances'
-      cell.colSpan = 3
+      cell.colSpan = 2
       row.appendChild(cell)
+
+      let updatedAt = document.createElement('td')
+      updatedAt.innerText = new Date().toLocaleString()
+      row.appendChild(updatedAt)
 
       balanceHolder.appendChild(row)
     }
@@ -132,9 +136,12 @@
       for (let i = 0; i < transactions.length; i++) {
         let row = document.createElement('tr')
 
+        let idAnchor = document.createElement('a')
+        idAnchor.href = Utils.getExplorerUrl(transactions[i].currency, 'tx/' + transactions[i].id)
+        idAnchor.target = '_blank'
+        idAnchor.innerText = (transactions[i].id || '').substr(0, 7) + '...'
         let id = document.createElement('td')
-        id.title = transactions[i].id
-        id.innerText = (transactions[i].id || '').substr(0, 7) + '...'
+        id.appendChild(idAnchor)
         row.appendChild(id)
 
         let currency = document.createElement('td')
@@ -149,17 +156,23 @@
         amount.innerText = transactions[i].amount
         row.appendChild(amount)
 
-        let otherParty = document.createElement('td')
-        otherParty.title = transactions[i].other_parties[0]
-        otherParty.innerText = (transactions[i].other_parties[0] || '').substr(0, 7) + '...'
-        row.appendChild(otherParty)
+        let otherParties = document.createElement('td')
+        for (let j = 0; j < transactions[i].other_parties.length; j++) {
+          let addressAnchor = document.createElement('a')
+          addressAnchor.href = Utils.getExplorerUrl(transactions[i].currency, 'address/' + transactions[i].other_parties[j])
+          addressAnchor.target = '_blank'
+          addressAnchor.innerText = (transactions[i].other_parties[j] || '').substr(0, 5) + '...'
+          otherParties.appendChild(addressAnchor)
+        }
+        row.appendChild(otherParties)
 
         let status = document.createElement('td')
         status.innerText = (transactions[i].status || '').toUpperCase()
         row.appendChild(status)
 
         let date = document.createElement('td')
-        date.innerText = new Date(transactions[i].confirmed_at).toLocaleString()
+        let timestamp = transactions[i].confirmed_at || transactions[i].initiated_at || 0
+        date.innerText = new Date(timestamp * 1000).toLocaleString()
         row.appendChild(date)
 
         transactionHolder.appendChild(row)
@@ -178,8 +191,13 @@
 
   function DisplayTransactionResult (transaction) {
     if (transaction.id) {
-      let transactionIdHolder = document.querySelector('#transaction-id')
-      transactionIdHolder.innerText = transaction.id
+      let txAnchor = document.createElement('a')
+      txAnchor.href = Utils.getExplorerUrl(transaction.currency, 'tx/' + transaction.id)
+      txAnchor.target = '_blank'
+      txAnchor.innerText = transaction.id
+
+      let transactionHolder = document.querySelector('#sent-transaction')
+      transactionHolder.appendChild(txAnchor)
 
       ListTransactions([ transaction ])
 

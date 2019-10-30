@@ -31,6 +31,19 @@ class Utils {
     })
       .then(resp => resp.json())
   }
+
+  getExplorerUrl (currency, path) {
+    switch (currency) {
+      case 'HBAR':
+        return ''
+      case 'BTC':
+        return 'https://www.blockchain.com/btctest/' + path
+      case 'BCH':
+        return 'https://explorer.bitcoin.com/tbch/' + path
+      default:
+        return 'https://rinkeby.etherscan.io/' + path
+    }
+  }
 }
 
 window.Utils = new Utils()
