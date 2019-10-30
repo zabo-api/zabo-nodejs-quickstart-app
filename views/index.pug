@@ -1,17 +1,112 @@
 extends layout
 
 block content
-  h1= title
-  hr
-  section#init
-    button#connect Connect
-
-  section#connected
-
-  section#data
-  section#error
-
   script.
     window.ZABO_CLIENT_ID = '#{clientId}'
 
-  script(src='scripts/script.js')
+  header
+    a(href='https://zabo.com/')
+      img(src='https://zabo.com/docs/images/logo.png' width=100)
+
+    h1 Zabo Quickstart App
+    hr
+
+  p Welcome to the Zabo Quickstart App!<br/>
+    | First let's connect a wallet by clicking the connect button below
+  button.connect-btn Connect
+
+  main#after-connect(hidden)
+    h2 You did it! A wallet was connected 🎉
+    p Let’s explore some of the API requests you can make with Zabo and the type of data it offers:
+
+    section
+      a(href='https://zabo.com/docs/#get-a-specific-balance' target='_blank')
+        h3 Balances 🔗
+        small Zabo.users.getBalances(...)
+
+      p By calling <b>Zabo.users.getBalances(...)</b> we can return the native balances (e.g. 0.5 BTC) of a wallet connection. <br/>
+        | Here are the balances for the wallets you have connected:
+
+      table
+        thead
+          tr
+            th Wallet
+            th Currency
+            th Balance
+            th Updated At
+        tbody#balances
+
+    section
+      a(href='https://zabo.com/docs/#create-a-user' target='_blank')
+        h3 User accounts 🔗
+        small Zabo.users.create(...)
+
+      p We also created a new user by calling <b>Zabo.users.create(...)</b> and attached the connected account.<br/>
+        | This user now has the following accounts connected:
+
+      table
+        thead
+          tr
+            th(colspan=2) Wallet
+            th Address
+        tbody#accounts
+
+      p Would you like to try connecting another account?
+      button.connect-btn Attach another account
+
+    section
+      a(href='https://zabo.com/docs/#get-transaction-history' target='_blank')
+        h3 Transactions 🔗
+        small Zabo.transactions.getList(...)
+
+      p By supplying <b>Zabo.transactions.getList(...)</b> we can return the transaction history of a given wallet connection. <br/>
+        | Here are the transactions for the account you just connected:
+
+      table
+        thead
+          tr
+            th Wallet ID
+            th Currency
+            th Type
+            th Amount
+            th Other Party
+            th Status
+            th Date
+        tbody#transactions
+
+    section
+      a(href='https://zabo.com/docs/#send-a-transaction' target='_blank')
+        h3 Send a transaction 🔗
+        small Zabo.transactions.send(...)
+
+      p Zabo also provides a function <b>Zabo.transactions.send(...)</b> to send cryptocurrency from the connected wallet. <br/>
+        | Try using the form below to send some crypto.
+
+      form#send-crypto(name='send-crypto')
+        fieldset
+          legend Send Crypto
+
+          div
+            label
+              input(type='radio' name='currency' value='BTC' checked)
+              | Bitcoin
+            label
+              input(type='radio' name='currency' value='ETH')
+              | Ether
+
+          p To address - specify a testnet address (use Rinkeby for Ether)
+          input(type='text' id='toAddress' name='toAddress')
+          br
+          small Use an address that you own so you can send it to your 'Send Back Address' when your done. Testnet funds are limited.<br/>
+            | You can find your 'Send Back Address' in the Zabo dashboard.
+
+          p Amount to send
+          input(type='text' id='amount' name='amount')
+
+          p Now it's time to send!
+          button(type='submit') Send Crypto
+
+      div#sent(hidden)
+        p Perfect! You just sent cryptocurrency using Zabo. <br/>
+          | Use a block explorer to see your testnet transaction:
+          span#transaction-id

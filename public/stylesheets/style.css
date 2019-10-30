@@ -1,26 +1,47 @@
 body {
-  padding: 50px;
+  padding: 24px 48px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
-}
-
-h2 {
-  margin-top: 32px;
+  text-decoration: none;
 }
 
 button {
   padding: 16px;
-  color: #FFFFFF;
+  border: 1px solid white;
   background: #5C6FEA;
+  color: white;
+  border-radius: 5px;
+  text-align: center;
 }
 
-pre {
-  padding: 16px;
-  margin-bottom: 32px;
-  background: #ECEBEB;
-  max-height: 200px;
-  overflow: auto;
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+}
+tr {
+  border-bottom: 1px solid #eae9e9;
+}
+th, td {
+  padding: 8px 16px;
+}
+
+h1, h2, h3, h4 {
+  margin: 16px 0 0;
+  color: #333;
+}
+
+form {
+  margin: 16px 0;
+}
+
+section {
+  margin: 32px 0;
+}
+
+[hidden] {
+  display: none;
 }
