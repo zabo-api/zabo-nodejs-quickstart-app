@@ -9,8 +9,6 @@
     // Initiate Zabo SDK
     Zabo.init({
       clientId: clientId,
-      baseUrl: 'https://dev-api.zabo.com',
-      connectUrl: 'https://dev-connect.zabo.com',
       env: 'sandbox'
     })
 
@@ -58,7 +56,7 @@
   }
 
   // HELPERS
-  function ListUserAccounts (accounts = []) {
+  function ListUserAccounts(accounts = []) {
     let accountHolder = document.querySelector('#accounts')
     accountHolder.innerHTML = ''
 
@@ -84,7 +82,7 @@
     }
   }
 
-  function ListAccountBalances (provider, balances = []) {
+  function ListAccountBalances(provider, balances = []) {
     let balanceHolder = document.querySelector('#balances')
 
     if (balances.length) {
@@ -129,7 +127,7 @@
     }
   }
 
-  function ListTransactions (transactions = []) {
+  function ListTransactions(transactions = []) {
     let transactionHolder = document.querySelector('#transactions')
 
     if (transactions.length) {
@@ -189,7 +187,7 @@
     }
   }
 
-  function DisplayTransactionResult (transaction) {
+  function DisplayTransactionResult(transaction) {
     if (transaction.id) {
       let txAnchor = document.createElement('a')
       txAnchor.href = Utils.getExplorerUrl(transaction.currency, 'tx/' + transaction.id)
@@ -199,7 +197,7 @@
       let transactionHolder = document.querySelector('#sent-transaction')
       transactionHolder.appendChild(txAnchor)
 
-      ListTransactions([ transaction ])
+      ListTransactions([transaction])
 
       Utils.show('#sent')
     }
