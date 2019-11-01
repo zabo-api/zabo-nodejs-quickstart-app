@@ -9,8 +9,6 @@ const zabo = require('zabo-sdk-js')
 zabo.init({
   apiKey: process.env.PUBLIC_API_KEY,
   secretKey: process.env.SECRET_API_KEY,
-  baseUrl: 'https://dev-api.zabo.com',
-  connectUrl: 'https://dev-connect.zabo.com',
   env: 'sandbox'
 })
 
