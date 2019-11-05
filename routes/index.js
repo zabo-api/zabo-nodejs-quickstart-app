@@ -27,10 +27,13 @@ router.post('/accounts', async (req, res) => {
       // Docs: https://zabo.com/docs/#add-account-to-existing-user
       try {
         await zabo.users.addAccount(myUser, account)
+        myUser.accounts.push(account)
       } catch (e) {
-        console.error(e)
+        if (!e.message.includes("already belongs")) {
+          console.error(e)
+        }
+        // Else do nothing because the account already belongs to the user.
       }
-      myUser.accounts.push(account)
     }
 
     // Get Transactions
