@@ -1,6 +1,6 @@
 {
   "name": "zabo-nodejs-quickstart-app",
-  "version": "0.6.0",
+  "version": "0.6.2",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
@@ -14,6 +14,6 @@
     "morgan": "~1.9.1",
     "open": "^7.0.0",
     "pug": "^2.0.4",
-    "zabo-sdk-js": "^0.6.0"
+    "zabo-sdk-js": "^0.6.2"
   }
 }
