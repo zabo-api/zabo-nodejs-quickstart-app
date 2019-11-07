@@ -75,7 +75,7 @@
       row.appendChild(wallet)
 
       let address = document.createElement('td')
-      address.innerText = accounts[i].address
+      address.innerText = accounts[i].id
       row.appendChild(address)
 
       accountHolder.appendChild(row)
