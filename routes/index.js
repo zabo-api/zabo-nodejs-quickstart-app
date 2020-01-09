@@ -54,7 +54,7 @@ Zabo.init({
         res.send({
           accounts: myUser.accounts,
           balances: balances.data,
-          transactions: transactions.data
+          transactions: transactions
         })
       } catch (err) {
         res.status(500).send({ message: err.message })
