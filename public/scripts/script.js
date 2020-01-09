@@ -3,11 +3,11 @@
   // Used to persist the connected account
   let accountConnectedDirectlyToClient = {}
 
-  document.onreadystatechange = () => {
+  document.onreadystatechange = async () => {
     if (document.readyState !== 'complete') { return }
 
     // Initiate Zabo SDK
-    Zabo.init({
+    const zabo = await Zabo.init({
       clientId: clientId,
       env: 'sandbox'
     })
@@ -16,7 +16,7 @@
     connectBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         // Call the .connect() window
-        Zabo.connect()
+        zabo.connect()
           .onConnection(account => {
             accountConnectedDirectlyToClient = account
 
