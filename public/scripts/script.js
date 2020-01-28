@@ -34,25 +34,6 @@
           )
       })
     })
-
-    const sendForm = document.querySelector('#send-crypto')
-    sendForm.addEventListener('submit', ev => {
-      ev.preventDefault()
-      Utils.hide('#sent')
-
-      Utils.post('/transactions', {
-        currency: sendForm.currency.value,
-        toAddress: sendForm.toAddress.value,
-        amount: sendForm.amount.value,
-        accountId: accountConnectedDirectlyToClient.id
-      })
-        .catch(error => {
-          console.error('sent transaction error:', error)
-        })
-        .then(transaction => {
-          DisplayTransactionResult(transaction)
-        })
-    })
   }
 
   // HELPERS
@@ -184,22 +165,6 @@
       row.appendChild(cell)
 
       transactionHolder.appendChild(row)
-    }
-  }
-
-  function DisplayTransactionResult(transaction) {
-    if (transaction.id) {
-      let txAnchor = document.createElement('a')
-      txAnchor.href = Utils.getExplorerUrl(transaction.currency, 'tx/' + transaction.id)
-      txAnchor.target = '_blank'
-      txAnchor.innerText = transaction.id
-
-      let transactionHolder = document.querySelector('#sent-transaction')
-      transactionHolder.appendChild(txAnchor)
-
-      ListTransactions([transaction])
-
-      Utils.show('#sent')
     }
   }
 })(window.Zabo, window.Utils, window.ZABO_CLIENT_ID)
