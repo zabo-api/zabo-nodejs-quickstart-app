@@ -23,7 +23,7 @@
             Utils.post('/accounts', account)
               .then(data => {
                 ListUserAccounts(data.accounts)
-                ListAccountBalances(account.wallet_provider, data.balances)
+                ListAccountBalances(account.provider, data.balances)
                 ListTransactions(data.transactions)
 
                 Utils.show('#after-connect')
@@ -46,13 +46,13 @@
 
       let logo = document.createElement('td')
       let img = document.createElement('img')
-      img.src = accounts[i].wallet_provider.logo
+      img.src = accounts[i].provider.logo
       img.width = 100
       logo.appendChild(img)
       row.appendChild(logo)
 
       let wallet = document.createElement('td')
-      wallet.innerText = accounts[i].wallet_provider.display_name
+      wallet.innerText = accounts[i].provider.display_name
       row.appendChild(wallet)
 
       let address = document.createElement('td')
