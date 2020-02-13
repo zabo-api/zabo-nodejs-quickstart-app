@@ -61,27 +61,6 @@ Zabo.init({
       }
     })
 
-    router.post('/transactions', async (req, res) => {
-      const requestBody = req.body
-
-      let transaction
-      try {
-        // Send a Transaction
-        // Docs: https://zabo.com/docs/#send-a-transaction
-        transaction = await zabo.transactions.send({
-          userId: myUser.id,
-          accountId: requestBody.accountId,
-          currency: requestBody.currency,
-          toAddress: requestBody.toAddress,
-          amount: requestBody.amount
-        })
-      } catch (err) {
-        res.status(500).send({ message: err.message })
-      }
-
-      res.send(transaction)
-    })
-
     router.get('/', function (req, res, next) {
       res.render('index', {
         title: 'Zabo Node.js Quickstart App',

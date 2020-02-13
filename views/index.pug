@@ -73,39 +73,3 @@ block content
             th Status
             th Date
         tbody#transactions
-
-    section
-      a(href='https://zabo.com/docs/#send-a-transaction' target='_blank')
-        h3 Send a transaction 🔗
-        small Zabo.transactions.send(...)
-
-      p Zabo also provides a function <b>Zabo.transactions.send(...)</b> to send cryptocurrency from the connected wallet. <br/>
-        | Try using the form below to send some crypto.
-
-      form#send-crypto(name='send-crypto')
-        fieldset
-          legend Send Crypto
-
-          div
-            label
-              input(type='radio' name='currency' value='BTC' checked)
-              | Bitcoin
-            label
-              input(type='radio' name='currency' value='ETH')
-              | Ether
-
-          p To address - specify a testnet address (use Rinkeby for Ether)
-          input(type='text' id='toAddress' name='toAddress')
-          br
-          small Use an address that you own so you can send it to your 'Send Back Address' when your done. Testnet funds are limited.<br/>
-            | You can find your 'Send Back Address' in the Zabo dashboard.
-
-          p Amount to send
-          input(type='text' id='amount' name='amount')
-
-          p Now it's time to send!
-          button(type='submit') Send Crypto
-
-      div#sent(hidden)
-        p Perfect! You just sent cryptocurrency using Zabo. Transaction Hash:
-          span#sent-transaction
