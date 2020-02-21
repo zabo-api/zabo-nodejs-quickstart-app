@@ -136,12 +136,14 @@
         row.appendChild(amount)
 
         let otherParties = document.createElement('td')
-        for (let j = 0; j < transactions[i].other_parties.length; j++) {
-          let addressAnchor = document.createElement('a')
-          addressAnchor.href = Utils.getExplorerUrl(transactions[i].currency, 'address/' + transactions[i].other_parties[j])
-          addressAnchor.target = '_blank'
-          addressAnchor.innerText = (transactions[i].other_parties[j] || '').substr(0, 5) + '...'
-          otherParties.appendChild(addressAnchor)
+        if (transactions[i].other_parties) {
+          for (let j = 0; j < transactions[i].other_parties.length; j++) {
+            let addressAnchor = document.createElement('a')
+            addressAnchor.href = Utils.getExplorerUrl(transactions[i].currency, 'address/' + transactions[i].other_parties[j])
+            addressAnchor.target = '_blank'
+            addressAnchor.innerText = (transactions[i].other_parties[j] || '').substr(0, 5) + '...'
+            otherParties.appendChild(addressAnchor)
+          }
         }
         row.appendChild(otherParties)
 
