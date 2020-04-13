@@ -54,7 +54,7 @@ router.post('/accounts', async (req, res) => {
 
 router.get('/', async (req, res, next) => {
   try {
-    if (!Boolean(req.app.locals.zabo)) {
+    if (!req.app.locals.zabo) {
       // Initializing the JS SDK
       // Docs: https://zabo.com/docs/#initializing-the-js-sdks
       const zabo = await Zabo.init({
@@ -70,7 +70,7 @@ router.get('/', async (req, res, next) => {
       clientId: process.env.CLIENT_ID
     })
   } catch (error) {
-    res.status(500).send({ message: err.message })
+    res.status(500).send({ message: error.message })
   }
 })
 
