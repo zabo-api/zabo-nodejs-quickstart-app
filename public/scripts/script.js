@@ -83,7 +83,7 @@
         row.appendChild(balance)
 
         let updatedAt = document.createElement('td')
-        updatedAt.innerText = new Date(balances[i].updated_at * 1000).toLocaleString()
+        updatedAt.innerText = new Date(balances[i].updated_at).toLocaleString()
         row.appendChild(updatedAt)
 
         balanceHolder.appendChild(row)
@@ -153,7 +153,7 @@
 
         let date = document.createElement('td')
         let timestamp = transactions[i].confirmed_at || transactions[i].initiated_at || 0
-        date.innerText = new Date(timestamp * 1000).toLocaleString()
+        date.innerText = new Date(timestamp).toLocaleString()
         row.appendChild(date)
 
         transactionHolder.appendChild(row)
