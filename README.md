@@ -9,6 +9,7 @@ To get started, clone this repository and run the start script with your Zabo cr
 ```
 git clone https://github.com/zabo-api/zabo-nodejs-quickstart-app.git \
 && cd zabo-nodejs-quickstart-app \
+&& npm install \
 && CLIENT_ID=YOUR_CLIENT_IDS \
 PUBLIC_API_KEY=YOUR_API_KEY \
 SECRET_API_KEY=YOUR_SECRET_API_KEY \
