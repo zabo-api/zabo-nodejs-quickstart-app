@@ -45,7 +45,7 @@ router.post('/accounts', async (req, res) => {
     res.send({
       accounts: myUser.accounts,
       balances: balances.data,
-      transactions: transactions
+      transactions: transactions.data
     })
   } catch (err) {
     res.status(500).send({ message: err.message })
