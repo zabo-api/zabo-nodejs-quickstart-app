@@ -38,8 +38,7 @@ router.post('/accounts', async (req, res) => {
     // Docs: https://zabo.com/docs/#get-a-specific-balance
     const balances = await zabo.users.getBalances({
       userId: myUser.id,
-      accountId: account.id,
-      currencies: ['ALL']
+      accountId: account.id
     })
 
     res.send({
