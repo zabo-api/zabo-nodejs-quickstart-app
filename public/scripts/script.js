@@ -115,12 +115,16 @@
       for (let i = 0; i < transactions.length; i++) {
         let row = document.createElement('tr')
 
-        let idAnchor = document.createElement('a')
-        idAnchor.href = Utils.getExplorerUrl(transactions[i].currency, 'tx/' + transactions[i].id)
-        idAnchor.target = '_blank'
-        idAnchor.innerText = (transactions[i].id || '').substr(0, 7) + '...'
         let id = document.createElement('td')
-        id.appendChild(idAnchor)
+        if ((transactions[i].id || '').substr(0, 1) === '0x') {
+          let idAnchor = document.createElement('a')
+          idAnchor.href = Utils.getExplorerUrl(transactions[i].currency, 'tx/' + transactions[i].id)
+          idAnchor.target = '_blank'
+          idAnchor.innerText = (transactions[i].id || '').substr(0, 7) + '...'
+          id.appendChild(idAnchor)
+        } else {
+          id.innerText = (transactions[i].id || '').substr(0, 7) + '...'
+        }
         row.appendChild(id)
 
         let currency = document.createElement('td')

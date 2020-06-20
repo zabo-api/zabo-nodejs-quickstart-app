@@ -1,5 +1,5 @@
 class Utils {
-  show (selector) {
+  show(selector) {
     let elem = document.querySelector(selector)
 
     if (elem) {
@@ -7,7 +7,7 @@ class Utils {
     }
   }
 
-  hide (selector) {
+  hide(selector) {
     let elem = document.querySelector(selector)
 
     if (elem) {
@@ -15,12 +15,12 @@ class Utils {
     }
   }
 
-  get (url) {
+  get(url) {
     return window.fetch(url)
       .then(resp => resp.json())
   }
 
-  post (url, data) {
+  post(url, data) {
     return window.fetch(url, {
       method: 'POST',
       headers: {
@@ -32,16 +32,12 @@ class Utils {
       .then(resp => resp.json())
   }
 
-  getExplorerUrl (currency, path) {
+  getExplorerUrl(currency, path) {
     switch (currency) {
-      case 'HBAR':
-        return ''
-      case 'BTC':
-        return 'https://www.blockchain.com/btctest/' + path
-      case 'BCH':
-        return 'https://explorer.bitcoin.com/tbch/' + path
-      default:
+      case 'ETH':
         return 'https://rinkeby.etherscan.io/' + path
+      default:
+        return '' + path
     }
   }
 }
