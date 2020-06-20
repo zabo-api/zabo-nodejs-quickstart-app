@@ -35,7 +35,7 @@ class Utils {
   getExplorerUrl(currency, path) {
     switch (currency) {
       case 'ETH':
-        return 'https://rinkeby.etherscan.io/' + path
+        return 'https://etherscan.io/' + path
       default:
         return '' + path
     }
