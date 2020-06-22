@@ -59,8 +59,6 @@ router.get('/', async (req, res, next) => {
       const zabo = await Zabo.init({
         apiKey: process.env.PUBLIC_API_KEY,
         secretKey: process.env.SECRET_API_KEY,
-	baseUrl: 'https://stage-api.zabo.com',
-	connectUrl: 'https://stage-connect.zabo.com',      
         env: 'sandbox'
       })
       req.app.locals.zabo = zabo

@@ -9,8 +9,6 @@
     // Initiate Zabo SDK
     const zabo = await Zabo.init({
       clientId: clientId,
-      baseUrl: 'https://stage-api.zabo.com',
-      connectUrl: 'https://stage-connect.zabo.com',
       env: 'sandbox'
     })
 
