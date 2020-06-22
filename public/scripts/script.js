@@ -116,7 +116,7 @@
         let row = document.createElement('tr')
 
         let id = document.createElement('td')
-        if ((transactions[i].id || '').substr(0, 1) === '0x') {
+        if ((transactions[i].id || '').substr(0, 2) === '0x') {
           let idAnchor = document.createElement('a')
           idAnchor.href = Utils.getExplorerUrl(transactions[i].currency, 'tx/' + transactions[i].id)
           idAnchor.target = '_blank'
