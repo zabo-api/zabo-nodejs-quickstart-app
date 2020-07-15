@@ -3,8 +3,9 @@ const router = express.Router()
 // Import Zabo SDK
 const Zabo = require('zabo-sdk-js')
 
+let myUser
+
 router.post('/accounts', async (req, res) => {
-  let myUser
   const zabo = req.app.locals.zabo
   const account = req.body
 
