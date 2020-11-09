@@ -1,6 +1,6 @@
 {
   "name": "zabo-nodejs-quickstart-app",
-  "version": "0.10.1",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
