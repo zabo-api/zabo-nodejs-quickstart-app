@@ -116,40 +116,25 @@
         let row = document.createElement('tr')
 
         let id = document.createElement('td')
-        if ((transactions[i].id || '').substr(0, 2) === '0x') {
-          let idAnchor = document.createElement('a')
-          idAnchor.href = Utils.getExplorerUrl(transactions[i].currency, 'tx/' + transactions[i].id)
-          idAnchor.target = '_blank'
-          idAnchor.innerText = (transactions[i].id || '').substr(0, 7) + '...'
-          id.appendChild(idAnchor)
-        } else {
-          id.innerText = (transactions[i].id || '').substr(0, 7) + '...'
-        }
+        id.innerText = (transactions[i].id || '').substr(0, 7) + '...'
         row.appendChild(id)
-
-        let currency = document.createElement('td')
-        currency.innerText = transactions[i].currency
-        row.appendChild(currency)
 
         let type = document.createElement('td')
         type.innerText = (transactions[i].type || '').toUpperCase()
         row.appendChild(type)
 
-        let amount = document.createElement('td')
-        amount.innerText = transactions[i].amount
-        row.appendChild(amount)
-
-        let otherParties = document.createElement('td')
-        if (transactions[i].other_parties) {
-          for (let j = 0; j < transactions[i].other_parties.length; j++) {
-            let addressAnchor = document.createElement('a')
-            addressAnchor.href = Utils.getExplorerUrl(transactions[i].currency, 'address/' + transactions[i].other_parties[j])
-            addressAnchor.target = '_blank'
-            addressAnchor.innerText = (transactions[i].other_parties[j] || '').substr(0, 5) + '...'
-            otherParties.appendChild(addressAnchor)
+        let parts = document.createElement('td')
+        let partsList = document.createElement('ul')
+        if (transactions[i].parts) {
+          for (let j = 0; j < transactions[i].parts.length; j++) {
+            let part = transactions[i].parts[j]
+            let line = document.createElement('li')
+            line.innerText = part.direction + ' ' + part.amount + ' ' + part.currency
+            partsList.appendChild(line)
           }
         }
-        row.appendChild(otherParties)
+        parts.appendChild(partsList)
+        row.appendChild(parts)
 
         let status = document.createElement('td')
         status.innerText = (transactions[i].status || '').toUpperCase()
