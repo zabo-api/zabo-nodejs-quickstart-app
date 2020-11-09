@@ -30,6 +30,12 @@ th, td {
   padding: 8px 16px;
 }
 
+ul {
+  list-style: none;
+  text-align: left;
+  text-transform: capitalize;
+}
+
 h1, h2, h3, h4 {
   margin: 16px 0 0;
   color: #333;
