@@ -1,6 +1,14 @@
+What is Zabo? A unified cryptocurrency API.
+=========================
+[Zabo](https://zabo.com) is an API for connecting with cryptocurrency exchanges, wallets and protocols like Bitcoin. Instead of manually integrating with [Coinbase API](https://zabo.com/integrations/coinbase), [Binance API](https://zabo.com/integrations/binance), [Bitcoin APIs](https://zabo.com/integrations/bitcoin) or the hundreds of other cryptocurrency APIs - you can simply use Zabo for them all.  
+
+We believe teams and developers should focus on building great products, not worry about the fragmented landscape of exchange APIs and blockchain protocols.  
+
+For our updated list of integrations, [check out our Zabo integrations](https://zabo.com/integrations).
+
 # Zabo Node.js Quickstart App
 
-Welcome! Zabo connects any cryptocurrency wallet to any application. This is our quickstart application to help you understand how Zabo can integrate into your application. If you haven't already, [visit zabo.com first and obtain API keys](https://zabo.com/signup). You can also operate Zabo in decentralized mode without API keys, [just visit our documentation at zabo.com/docs](https://zabo.com/docs) and see how.
+The following is a quickstart app to help you start working with Zabo's API immediately.
 
 ## Getting Started
 
