@@ -16,6 +16,7 @@ button {
   color: white;
   border-radius: 5px;
   text-align: center;
+  cursor: pointer;
 }
 
 table {
@@ -47,4 +48,27 @@ section {
 
 [hidden] {
   display: none;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+.loader {
+  animation: spin 1s linear infinite;
+  border: 2px solid #ccc;
+  border-top-color: #5C6FEA;
+  border-radius: 50%;
+  height: 24px;
+  width: 24px;
+  float: right;
+  display: none;
+}
+
+body.loading .loader {
+  display: block;
+}
+
+body.loading button {
+  pointer-events: none;
+  opacity: 0.5;
 }
