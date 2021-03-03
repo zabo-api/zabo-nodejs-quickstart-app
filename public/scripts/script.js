@@ -6,6 +6,8 @@
   document.onreadystatechange = async () => {
     if (document.readyState !== 'complete') { return }
 
+    const body = document.querySelector('body')
+
     // Initiate Zabo SDK
     const zabo = await Zabo.init({
       clientId: clientId,
@@ -16,6 +18,8 @@
     connectBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         // Call the .connect() window
+        body.className = 'loading'
+
         zabo.connect()
           .onConnection(account => {
             accountConnectedDirectlyToClient = account
@@ -27,11 +31,13 @@
                 ListTransactions(data.transactions)
 
                 Utils.show('#after-connect')
+                body.className = ''
               })
           })
-          .onError(error =>
+          .onError(error => {
             console.error('account connection error:', error)
-          )
+            body.className = ''
+          })
       })
     })
   }
@@ -75,11 +81,11 @@
         row.appendChild(wallet)
 
         let currency = document.createElement('td')
-        currency.innerText = balances[i].currency
+        currency.innerText = balances[i].ticker
         row.appendChild(currency)
 
         let balance = document.createElement('td')
-        balance.innerText = balances[i].balance
+        balance.innerText = balances[i].amount
         row.appendChild(balance)
 
         let updatedAt = document.createElement('td')
@@ -120,7 +126,7 @@
         row.appendChild(id)
 
         let type = document.createElement('td')
-        type.innerText = (transactions[i].type || '').toUpperCase()
+        type.innerText = (transactions[i].transaction_type || '').toUpperCase()
         row.appendChild(type)
 
         let parts = document.createElement('td')
@@ -129,7 +135,7 @@
           for (let j = 0; j < transactions[i].parts.length; j++) {
             let part = transactions[i].parts[j]
             let line = document.createElement('li')
-            line.innerText = part.direction + ' ' + part.amount + ' ' + part.currency
+            line.innerText = part.direction + ' ' + part.amount + ' ' + part.ticker
             partsList.appendChild(line)
           }
         }
